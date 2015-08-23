@@ -1,0 +1,26 @@
+<div id="user_nav">
+
+  <% if user_signed_in? %>
+    <% User.all.each do |u| %>
+        <ul>
+        <li>
+          <%= u.email %>
+          <%= link_to "Edit", edit_user_path(u) %> 
+          <%= link_to "Delete", user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if u.banned? %>
+            <%= link_to "Unban", unban_user_path(u) %>
+          <% else %>  
+            <%= link_to "Ban", ban_user_path(u) %>
+          <% end %>  
+        </li>
+      </ul>
+    <% end %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <% end %>
+
+</div>
+
