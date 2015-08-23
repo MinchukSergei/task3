@@ -10,6 +10,7 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
+  # Test comment.
   def create
     @user = User.find_by_email(params[:user][:email])
     if @user.present? && @user.banned?
