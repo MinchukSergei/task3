@@ -260,4 +260,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, "169374326727016", "370c1ce87c9ee7a8d3e440f0549207e0", :scope => 'public_profile,email', info_fields: 'email,name'
+  config.omniauth :twitter, 'eeSTyHh8SbBey3OCEXXd3CZ87', 'CuDgMmtIB4AY6NXdPTJ8Cyso0W62guF96mva62talXetgAmZNg', scope: "user,repo,gist", info_fields: 'email,name', provider_ignores_state: true
+  config.omniauth :vkontakte, '5043460', 'LI5Mx1C7DcmzBSQi5JZb', :scope => 'public_profile,email', info_fields: 'email,name'
+  config.omniauth :github, '6dc8c7ab6ad903339647', '14e9fc5e8bea0e8ebaecc398709907a464849bf8', scope: "user,repo,gist", info_fields: 'email,name', provider_ignores_state: true
 end

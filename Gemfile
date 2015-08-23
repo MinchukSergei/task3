@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'devise'
+gem 'domp'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '>= 3.2'
@@ -48,3 +49,8 @@ group :development, :test do
   gem 'spring'
 end
 
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
+gem 'omniauth-github'
