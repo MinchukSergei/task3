@@ -6,24 +6,45 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to root_path
+    if @user.update(user_params)
+      flash[:success] = "User #{@user.email} has been updated"
+      redirect_to root_path    
+    else
+      flash[:error] = @user.errors.to_a.join(";") if @user.errors.any?
+      redirect_to :back
+    end
   end
 
   def destroy
-    @user.destroy
-    redirect_to root_path
+    if @user.destroy
+      redirect_to root_path
+      flash[:success] = "User has been deleted"
+    end
   end  
 
   def ban
-    @user.update(banned: true)
-    redirect_to :back
+    if @user.update(banned: true)
+      flash[:success] = "User #{@user.email} has been banned"
+      redirect_to :back
+    else
+      flash[:notice] = "User #{@user.email} has not been banned"
+      redirect_to root_path
+    end
   end  
 
   def unban
-    @user.update(banned: false)
-    redirect_to :back
-  end  
+    if @user.update(banned: false)
+      flash[:success] = "User #{@user.email} has been unbanned"
+      redirect_to :back
+    else
+      flash[:notice] = "User #{@user.email} has not been unbanned"
+      redirect_to root_path
+    end
+  end
+
+  def account_update_params
+    devise_parameter_sanitizer.sanitize(:account_update)
+  end
 
   private
 

@@ -1,0 +1,8 @@
+<% flash.each do |key, all_messages| %>
+  <div class="alert alert-<%= key %>">
+   <button class="close" data-dismiss="alert">×</button>
+    <% all_messages.split(";").each do |message| %>
+      <p><%= message %></p>
+    <% end %>      
+  </div>
+<% end %>
