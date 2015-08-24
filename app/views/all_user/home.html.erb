@@ -20,10 +20,10 @@
   <% else %>
     <h1>Welcome to AUTH APP</h1>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:facebook) %></p>
-    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:twitter) %></p>
-    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:vkontakte) %></p>
-    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:github) %></p>
+    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:facebook) %>
+    <%= link_to image_tag("twitter.png", size: "25x25"), user_omniauth_authorize_path(:twitter) %>
+    <%= link_to image_tag("vk.png", size: "25x25"), user_omniauth_authorize_path(:vkontakte) %>
+    <%= link_to image_tag("github.png", size: "25x25"), user_omniauth_authorize_path(:github) %></p>
   <% end %>
 
 </div>
