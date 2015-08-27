@@ -1,13 +1,11 @@
 <div id="user_nav">
   <% if user_signed_in? %>
-      Signed in as <%= current_user.email %>. Not you?
+      Signed in as <%= current_user.name %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-    <table class="table table-bordered">
+    <table class="table table-striped">
     <thead>
       <tr>
-        <th>
-          Users
-        </th>
+        <th>Users</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>Ban</th>
@@ -17,22 +15,22 @@
 
       <tbody>
         <tr>
-          <th>
+          <td>
             <%= u.email %>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to "Edit", edit_user_path(u) %> 
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to "Delete", user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>  
-          </th>
-          <th>
+          </td>
+          <td>
             <% if u.banned? %>
               <%= link_to "Unban", unban_user_path(u) %>
             <% else %>  
               <%= link_to "Ban", ban_user_path(u) %>
           <% end %>    
-          </th>
+          </td>
         </tr>
         </tbody>
     <% end %>
@@ -42,7 +40,7 @@
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
     <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:facebook) %>
     <%= link_to image_tag("twitter.png", size: "25x25"), user_omniauth_authorize_path(:twitter) %>
-    <%= link_to image_tag("vk.png", size: "25x25"), user_omniauth_authorize_path(:vkontakte) %>
+    <%= link_to image_tag("vkontakte.png", size: "25x25"), user_omniauth_authorize_path(:vkontakte) %>
     <%= link_to image_tag("github.png", size: "25x25"), user_omniauth_authorize_path(:github) %></p>
   <% end %>
 

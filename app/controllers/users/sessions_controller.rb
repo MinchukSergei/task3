@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
   # Test comment.
   def create
-    @user = User.find_by_email(params[:user][:email])
+    @user = User.find_by_email(params[:user][:uid])
     if @user.present? && @user.banned?
       flash[:alert] =  "You are banned!"
       redirect_to :back
