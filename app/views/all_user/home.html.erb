@@ -2,21 +2,41 @@
   <% if user_signed_in? %>
       Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>
+          Users
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Ban</th>
+      </tr>
+    </thead>
     <% User.all.each do |u| %>
-        <ul>
-        <li>
-          <%= u.email %>
-          <%= link_to "Edit", edit_user_path(u) %> 
-          <%= link_to "Delete", user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% if u.banned? %>
-            <%= link_to "Unban", unban_user_path(u) %>
-          <% else %>  
-            <%= link_to "Ban", ban_user_path(u) %>
-          <% end %>  
-        </li>
-      </ul>
+
+      <tbody>
+        <tr>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= link_to "Edit", edit_user_path(u) %> 
+          </th>
+          <th>
+            <%= link_to "Delete", user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>  
+          </th>
+          <th>
+            <% if u.banned? %>
+              <%= link_to "Unban", unban_user_path(u) %>
+            <% else %>  
+              <%= link_to "Ban", ban_user_path(u) %>
+          <% end %>    
+          </th>
+        </tr>
+        </tbody>
     <% end %>
-    
+    </table>
   <% else %>
     <h1>Welcome to AUTH APP</h1>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
