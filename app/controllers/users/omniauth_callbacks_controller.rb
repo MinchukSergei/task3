@@ -35,11 +35,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           flash[:alert] =  "You are banned!"
           redirect_to root_path
         else
+          flash[:success] =  "Welcome! You have signed in from #{auth_params.provider} successfully."
           sign_in_with_existing_authentication(authentication)
         end
       elsif existing_user
+        flash[:success] =  "Welcome! You have signed in from #{auth_params.provider} successfully."
         create_authentication_and_sign_in(auth_params, existing_user, provider)
       else
+        flash[:success] =  "Welcome! You have signed in from #{auth_params.provider} successfully."
         create_user_and_authentication_and_sign_in(auth_params, provider)
       end
     end

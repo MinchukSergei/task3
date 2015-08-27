@@ -1,7 +1,8 @@
 <div id="user_nav">
   <% if user_signed_in? %>
-      Signed in as <%= current_user.name %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <h4>Signed in as <%= current_user.name %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-primary" %>
+    </h4>
     <table class="table table-striped">
     <thead>
       <tr>
@@ -19,16 +20,16 @@
             <%= u.email %>
           </td>
           <td>
-            <%= link_to "Edit", edit_user_path(u) %> 
+            <%= link_to image_tag("edit.png", size: "25x25"), edit_user_path(u) %> 
           </td>
           <td>
-            <%= link_to "Delete", user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>  
+            <%= link_to image_tag("delete.png", size: "25x25"), user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %>  
           </td>
           <td>
             <% if u.banned? %>
-              <%= link_to "Unban", unban_user_path(u) %>
+              <%= link_to image_tag("unban.png", size: "25x25"), unban_user_path(u) %>
             <% else %>  
-              <%= link_to "Ban", ban_user_path(u) %>
+              <%= link_to image_tag("ban.png", size: "25x25"), ban_user_path(u) %>
           <% end %>    
           </td>
         </tr>
@@ -36,13 +37,22 @@
     <% end %>
     </table>
   <% else %>
+  <div class="hero-unit">
     <h1>Welcome to AUTH APP</h1>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-    <p><%= link_to image_tag("facebook.png", size: "25x25"), user_omniauth_authorize_path(:facebook) %>
-    <%= link_to image_tag("twitter.png", size: "25x25"), user_omniauth_authorize_path(:twitter) %>
-    <%= link_to image_tag("vkontakte.png", size: "25x25"), user_omniauth_authorize_path(:vkontakte) %>
-    <%= link_to image_tag("github.png", size: "25x25"), user_omniauth_authorize_path(:github) %></p>
+      <div class="col-sm-offset-5 col-md-6">
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%> or 
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
+      </div>
+  </div>
+  
+  <div class="pagination">
+    <ul>
+        <%= link_to image_tag("facebook.png", size: "30x30"), user_omniauth_authorize_path(:facebook) %>
+        <%= link_to image_tag("twitter.png", size: "30x30"), user_omniauth_authorize_path(:twitter) %>
+        <%= link_to image_tag("vkontakte.png", size: "30x30"), user_omniauth_authorize_path(:vkontakte) %>
+        <%= link_to image_tag("github.png", size: "30x30"), user_omniauth_authorize_path(:github) %></p>
+    </ul>
+  </div>
   <% end %>
-
 </div>
 

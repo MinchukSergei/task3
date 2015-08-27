@@ -5,29 +5,44 @@
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
-    text-align: left;
+    text-align: center;
  }
 
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
-    text-align: left;
+    text-align: center;
  }
 
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
-    text-align: left;
+    text-align: center;
  }
 
 .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
-    text-align: left;
+    text-align: center;
  }
+
+h1, h2, h4 {
+    text-align: center;
+}
+
+.hero-unit {
+    padding: 60px;
+    margin-bottom: 30px;
+    background-color: #eeeeee;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
